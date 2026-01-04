@@ -36,6 +36,12 @@ const Header = () => {
             </Button>
           </div>
         </div>
+        {/* ============= book sell ============ */}
+        <div className="flex items-center gap-4">
+        <Link href='/book-sell'>
+        </Link>
+        </div>
+
       </div>
     </header>
   );
