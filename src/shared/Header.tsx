@@ -6,53 +6,116 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import { Lock, Search, User } from "lucide-react";
+import {
+  FolderLock,
+  Heart,
+  HelpCircle,
+  Lock,
+  LogOut,
+  Package,
+  PiggyBank,
+  Search,
+  ShoppingCart,
+  User,
+  User2,
+  Users2,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
-  const handleLoginClick =()=>{
+  const handleLoginClick = () => {};
+  const handleProtectionNavigation = (href: string) => {
+    console.log(href);
+  };
+  const handleLogout =()=>{
     
   }
-  const user : any = {
+  const user: any = {
     profilePicture: "",
-    name:'',
-    email:''
+    name: "",
+    email: "",
   };
 
   const userPlaceholder = "";
   // ========== menuItems ===========//
   const menuItems = [
-    ...(user && user ? [
-      {
-        href:"account/profile",
-        content:(
-          <div className="flex space-x-4 items-center p-2 border-b">
-               <Avatar className="w-12 h-12 -ml-2 rounded-full">
-                {user?.profilePicture ? (
-                  <AvatarImage alt="user_image"></AvatarImage>
-                ) : (
-                  <AvatarFallback>Tonmoy</AvatarFallback>
-                ) }
-              </Avatar>
-              {/* =========== name and email ============ */}
-              <div className="flex flex-col">
-                <span className="font-semibold text-base"> 
-                  {user.name}
-                </span>
-                 <span className="font-semibold text-xs text-gray-500"> 
-                  {user.email}
-                </span>
+    ...(user && user
+      ? [
+          {
+            href: "account/profile",
+            content: (
+              <div className="flex space-x-4 items-center p-2 border-b">
+                <Avatar className="w-12 h-12 -ml-2 rounded-full">
+                  {user?.profilePicture ? (
+                    <AvatarImage alt="user_image"></AvatarImage>
+                  ) : (
+                    <AvatarFallback>Tonmoy</AvatarFallback>
+                  )}
+                </Avatar>
+                {/* =========== name and email ============ */}
+                <div className="flex flex-col">
+                  <span className="font-semibold text-base">{user.name}</span>
+                  <span className="font-semibold text-xs text-gray-500">
+                    {user.email}
+                  </span>
+                </div>
               </div>
-          </div>
-        )
-      }
-    ]:[
+            ),
+          },
+        ]
+      : [
+          {
+            icon: <User className="h-5 w-5" />,
+            label: "My Profile",
+            onClick: () => handleProtectionNavigation("account/profile"),
+          },
+        ]),
+    {
+      icon: <Package className="h-5 w-5" />,
+      label: "My Orders",
+      onClick: () => handleProtectionNavigation("/account/orders"),
+    },
+    {
+      icon: <PiggyBank className="h-5 w-5" />,
+      label: "My Selling Orders",
+      onClick: () => handleProtectionNavigation("/account/selling-products"),
+    },
+    {
+      icon: <ShoppingCart className="h-5 w-5" />,
+      label: "Cart",
+      onClick: () => handleProtectionNavigation("/checkout/cart"),
+    },
+    {
+      icon: <Heart className="h-5 w-5" />,
+      label: "My Wishlist",
+     onClick:()=>handleProtectionNavigation("account/wishlist")
+    },
+    {
+      icon: <User2 className="h-5 w-5" />,
+      label: "About Us",
+      href:'/about'},
+    {
+      icon: <Lock className="h-5 w-5" />,
+      label: "Terms & Use",
+      href:'/terms-of-use'
+    },
+    {
+      icon: <FolderLock className="h-5 w-5" />,
+      label: "Privacy-Policy",
+      href:'/privacy-policy'
+    },
+    {
+      icon: <HelpCircle className="h-5 w-5" />,
+      label: "Help",
+       href:'/how-it-works'
+    },
+    ...(user && [
       {
-        icon:<Lock className="h-5 w-5"/>,
-        label:"Login/Signup",
-        onClick:handleLoginClick
-      }
+      icon: <LogOut className="h-5 w-5" />,
+      label: "Logout",
+      onClick:handleLogout
+    },
     ])
   ];
   return (
@@ -109,9 +172,7 @@ const Header = () => {
               My Account
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-80 p-2">
-
-          </DropdownMenuContent>
+          <DropdownMenuContent className="w-80 p-2"></DropdownMenuContent>
         </DropdownMenu>
       </div>
     </header>
