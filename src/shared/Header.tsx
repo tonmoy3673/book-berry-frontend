@@ -118,6 +118,23 @@ const Header = () => {
     },
     ])
   ];
+
+  const MenuItems =({className=""})=>(
+    <div className={className}>
+      {
+        menuItems?.map((item,index)=>
+        item?.href ? (
+          <Link href={item.href} key={index}>
+
+          </Link>
+        ):(
+
+        )
+        )
+      }
+    </div>
+
+  )
   return (
     <header className="border-b bg-white sticky top-0 z-50">
       {/* ============ desktop view ========== */}
