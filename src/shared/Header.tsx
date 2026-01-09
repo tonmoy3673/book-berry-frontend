@@ -1,3 +1,4 @@
+"use client"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,10 +21,13 @@ import {
   User2,
   Users2,
 } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const Header = () => {
+  const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false)
   const handleLoginClick = () => {};
   const handleProtectionNavigation = (href: string) => {
     console.log(href);
@@ -124,7 +128,7 @@ const Header = () => {
       {
         menuItems?.map((item,index)=>
         item?.href ? (
-          <Link href={item.href} key={index}>
+          <Link className="flex items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
 
           </Link>
         ):(
