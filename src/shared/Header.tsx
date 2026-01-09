@@ -8,8 +8,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
+  BookLock,
   ChevronRight,
+  FileTerminal,
   FolderLock,
+  Handbag,
   Heart,
   HelpCircle,
   Lock,
@@ -83,7 +86,7 @@ const Header = () => {
       onClick: () => handleProtectionNavigation("/account/orders"),
     },
     {
-      icon: <PiggyBank className="h-5 w-5" />,
+      icon: <Handbag className="h-5 w-5" />,
       label: "My Selling Orders",
       onClick: () => handleProtectionNavigation("/account/selling-products"),
     },
@@ -102,12 +105,12 @@ const Header = () => {
       label: "About Us",
       href:'/about'},
     {
-      icon: <Lock className="h-5 w-5" />,
+      icon: <FileTerminal className="h-5 w-5" />,
       label: "Terms & Use",
       href:'/terms-of-use'
     },
     {
-      icon: <FolderLock className="h-5 w-5" />,
+      icon: <BookLock className="h-5 w-5" />,
       label: "Privacy-Policy",
       href:'/privacy-policy'
     },
@@ -132,22 +135,22 @@ const Header = () => {
         item?.href ? (
           <Link 
           onClick={()=>setIsDropdownOpen(false)}
-           className="flex items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
+           className="flex items-center gap-3 cursor-pointer px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
             {item?.icon}
             <span>{item?.label}</span>
             {item?.content && <div className="mt-1">{item.content}</div>}
             <ChevronRight className="w-4 h-3 ml-auto"/>
           </Link>
         ):(
-           <Button 
+           <button 
           key={index}
           onClick={item.onClick}
-           className="flex w-full items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
+           className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
             {item?.icon}
-            <span>{item?.label}</span>
+            <span>{item?.label} </span>
             {item?.content && <div className="mt-1">{item.content}</div>}
             <ChevronRight className="w-4 h-3 ml-auto"/>
-          </Button>
+          </button>
         )
         )
       }
