@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
+  ChevronRight,
   FolderLock,
   Heart,
   HelpCircle,
@@ -15,6 +16,7 @@ import {
   LogOut,
   Package,
   PiggyBank,
+  PiSquare,
   Search,
   ShoppingCart,
   User,
@@ -128,11 +130,24 @@ const Header = () => {
       {
         menuItems?.map((item,index)=>
         item?.href ? (
-          <Link className="flex items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
-
+          <Link 
+          onClick={()=>setIsDropdownOpen(false)}
+           className="flex items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
+            {item?.icon}
+            <span>{item?.label}</span>
+            {item?.content && <div className="mt-1">{item.content}</div>}
+            <ChevronRight className="w-4 h-3 ml-auto"/>
           </Link>
         ):(
-
+           <Button 
+          key={index}
+          onClick={item.onClick}
+           className="flex w-full items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
+            {item?.icon}
+            <span>{item?.label}</span>
+            {item?.content && <div className="mt-1">{item.content}</div>}
+            <ChevronRight className="w-4 h-3 ml-auto"/>
+          </Button>
         )
         )
       }
@@ -178,7 +193,7 @@ const Header = () => {
           </Link>
         </div>
         {/* ================= dropdown ============= */}
-        <DropdownMenu>
+        <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost">
               <Avatar className="w-8 h-8 rounded-full">
@@ -193,7 +208,9 @@ const Header = () => {
               My Account
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-80 p-2"></DropdownMenuContent>
+          <DropdownMenuContent className="w-80 p-2">
+            <MenuItems/>
+          </DropdownMenuContent>
         </DropdownMenu>
       </div>
     </header>
