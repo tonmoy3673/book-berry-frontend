@@ -32,7 +32,7 @@ import { useDispatch } from "react-redux";
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const router = useRouter();
-  const dispatch = useDispatch();
+  
   const handleLoginClick = () => {};
   const handleProtectionNavigation = (href: string) => {
     if (user) {
@@ -40,9 +40,8 @@ const Header = () => {
       setIsDropdownOpen(false)
     }
     else{
-
+      setIsDropdownOpen(false)
     }
-    console.log(href);
   };
   const handleLogout = () => {};
   const user: any = {
