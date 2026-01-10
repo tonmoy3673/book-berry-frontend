@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,20 +11,16 @@ import {
   BookLock,
   ChevronRight,
   FileTerminal,
-  FolderLock,
   Handbag,
   Heart,
   HelpCircle,
   Lock,
   LogOut,
   Package,
-  PiggyBank,
-  PiSquare,
   Search,
   ShoppingCart,
   User,
   User2,
-  Users2,
 } from "lucide-react";
 
 import Image from "next/image";
@@ -32,14 +28,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 const Header = () => {
-  const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const handleLoginClick = () => {};
   const handleProtectionNavigation = (href: string) => {
     console.log(href);
   };
-  const handleLogout =()=>{
-    
-  }
+  const handleLogout = () => {};
   const user: any = {
     profilePicture: "",
     name: "",
@@ -98,65 +92,69 @@ const Header = () => {
     {
       icon: <Heart className="h-5 w-5" />,
       label: "My Wishlist",
-     onClick:()=>handleProtectionNavigation("account/wishlist")
+      onClick: () => handleProtectionNavigation("account/wishlist"),
     },
     {
       icon: <User2 className="h-5 w-5" />,
       label: "About Us",
-      href:'/about'},
+      href: "/about",
+    },
     {
       icon: <FileTerminal className="h-5 w-5" />,
       label: "Terms & Use",
-      href:'/terms-of-use'
+      href: "/terms-of-use",
     },
     {
       icon: <BookLock className="h-5 w-5" />,
       label: "Privacy-Policy",
-      href:'/privacy-policy'
+      href: "/privacy-policy",
     },
     {
       icon: <HelpCircle className="h-5 w-5" />,
       label: "Help",
-       href:'/how-it-works'
+      href: "/how-it-works",
     },
     ...(user && [
       {
-      icon: <LogOut className="h-5 w-5" />,
-      label: "Logout",
-      onClick:handleLogout
-    },
-    ])
+        icon: <LogOut className="h-5 w-5" />,
+        label: "Logout",
+        onClick: handleLogout,
+      },
+    ]),
   ];
 
-  const MenuItems =({className=""})=>(
+  const MenuItems = ({ className = "" }) => (
     <div className={className}>
-      {
-        menuItems?.map((item,index)=>
+      {menuItems?.map((item, index) =>
         item?.href ? (
-          <Link 
-          onClick={()=>setIsDropdownOpen(false)}
-           className="flex items-center gap-3 cursor-pointer px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
+          <Link
+            onClick={() => setIsDropdownOpen(false)}
+            className="flex items-center gap-3 cursor-pointer px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg"
+            href={item.href}
+            key={index}
+          >
             {item?.icon}
             <span>{item?.label}</span>
             {item?.content && <div className="mt-1">{item.content}</div>}
-            <ChevronRight className="w-4 h-3 ml-auto"/>
+            <ChevronRight className="w-4 h-3 ml-auto" />
           </Link>
-        ):(
-           <button 
-          key={index}
-          onClick={item.onClick}
-           className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg" href={item.href} key={index}>
+        ) : (
+          <button
+            key={index}
+            onClick={item.onClick}
+            className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg"
+            href={item.href}
+            
+          >
             {item?.icon}
             <span>{item?.label} </span>
             {item?.content && <div className="mt-1">{item.content}</div>}
-            <ChevronRight className="w-4 h-3 ml-auto"/>
+            <ChevronRight className="w-4 h-3 ml-auto" />
           </button>
         )
-        )
-      }
+      )}
     </div>
-
-  )
+  );
   return (
     <header className="border-b bg-white sticky top-0 z-50">
       {/* ============ desktop view ========== */}
@@ -212,7 +210,7 @@ const Header = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-80 p-2">
-            <MenuItems/>
+            <MenuItems />
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
