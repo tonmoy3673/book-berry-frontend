@@ -25,12 +25,17 @@ import {
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const router = useRouter();
   const handleLoginClick = () => {};
   const handleProtectionNavigation = (href: string) => {
+    if (user) {
+      router.push(href)
+    }
     console.log(href);
   };
   const handleLogout = () => {};
