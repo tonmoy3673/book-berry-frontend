@@ -153,7 +153,7 @@ const Header = () => {
             key={index}
             onClick={item.onClick}
             className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg"
-            href={item.href}
+            
             
           >
             {item?.icon}
@@ -168,7 +168,7 @@ const Header = () => {
   return (
     <header className="border-b bg-white sticky top-0 z-50">
       {/* ============ desktop view ========== */}
-      <div className="container w-[80%] mx-auto hidden md:flex items-center justify-between p-4">
+      <div className="container w-[80%] mx-auto hidden md:flex gap-x-3.5 items-center justify-between p-4">
         <Link href="/" className="flex  items-center">
           <Image
             src="/images/webLogo.png"
