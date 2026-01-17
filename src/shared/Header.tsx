@@ -32,15 +32,14 @@ import { useDispatch } from "react-redux";
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const router = useRouter();
-  
+
   const handleLoginClick = () => {};
   const handleProtectionNavigation = (href: string) => {
     if (user) {
-      router.push(href)
-      setIsDropdownOpen(false)
-    }
-    else{
-      setIsDropdownOpen(false)
+      router.push(href);
+      setIsDropdownOpen(false);
+    } else {
+      setIsDropdownOpen(false);
     }
   };
   const handleLogout = () => {};
@@ -153,15 +152,13 @@ const Header = () => {
             key={index}
             onClick={item.onClick}
             className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 transition-colors duration-200 text-sm hover:bg-gray-200 rounded-lg"
-            
-            
           >
             {item?.icon}
             <span>{item?.label} </span>
             {item?.content && <div className="mt-1">{item.content}</div>}
             <ChevronRight className="w-4 h-3 ml-auto" />
           </button>
-        )
+        ),
       )}
     </div>
   );
